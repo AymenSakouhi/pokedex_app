@@ -1,15 +1,13 @@
-import * as React from "react";
 import "./App.css";
+import GetPokemons from "./components/GetPokemons.tsx";
 
 function App() {
-  React.useEffect(() => {
-    console.log("Hello world!");
-  }, []);
   return (
     <>
-      <h1 className="text-3xl font-bold bg-slate-400 text-black">
+      <h1 className="text-3xl font-bold light:text-black dark:text-rose-50">
         Pokedex app
       </h1>
+      <GetPokemons />
     </>
   );
 }

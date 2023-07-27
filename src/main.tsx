@@ -31,18 +31,15 @@ const link = new HttpLink({
   uri: "https://graphql-pokeapi.graphcdn.app/",
 });
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([errorLink, link]),
 });
 
-console.log(client);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div>
-    <ApolloProvider client={client}>
-      <App />
-      <GetPokemons />
-    </ApolloProvider>
-  </div>
+root.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
 );

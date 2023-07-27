@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_POKEMONS } from "../graphql/Queries";
+import { GET_ALL_POKEMONS, GET_POKEMON_DETAILS } from "../graphql/Queries";
+import { GetPokemonDetails } from "./GetPokemonDetails";
 
 type Pokemon = {
   name: string;
@@ -14,7 +15,9 @@ const GetPokemons = () => {
   const { loading, error, data } = useQuery(GET_ALL_POKEMONS, {
     variables: { offset, limit },
   });
+
   const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
+  const [pokemonDetails, setPokemonDetails] = React.useState<Pokemon[]>([]);
 
   useEffect(() => {
     setPokemons(data?.pokemons?.results);
@@ -27,7 +30,10 @@ const GetPokemons = () => {
           pokemons?.map((pokemon: Pokemon) => (
             <div
               key={Math.random().toString(26).slice(2)}
-              className="p-3 border m-3 flex flex-col justify-center items-center srounded-xl shadow-lg bg-gray-800 text-white w-64 h-64 md:col-span-2"
+              className="cursor-pointer hover:bg-gray-500 p-3 border m-3 flex flex-col justify-center items-center srounded-xl shadow-lg bg-gray-800 text-white w-64 h-64 md:col-span-2"
+              onClick={() => {
+                GetPokemonDetails(pokemon.name, setPokemonDetails);
+              }}
             >
               <p className="line-clamp-6">{pokemon.name}</p>
               <img src={pokemon.image} alt={pokemon.name} />
