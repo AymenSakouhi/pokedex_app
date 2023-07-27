@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## APP LINK
+
+[Pokedex_app](https://64c2ed514021360ee25c0f35--teal-puppy-fd6f43.netlify.app/)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
