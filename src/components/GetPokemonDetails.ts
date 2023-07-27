@@ -2,6 +2,9 @@ import { client } from "../main";
 import { GET_POKEMON_DETAILS } from "../graphql/Queries";
 
 export type Move = {
+  move: {
+    name: string;
+  };
   name: string;
   __typename: string;
 };
@@ -28,8 +31,9 @@ export type PokemonDetails = {
 
 export const GetPokemonDetails = async (
   name: string,
-  cb: React.Dispatch<PokemonDetails[]>
+  cb: React.Dispatch<PokemonDetails>
 ) => {
+  cb({} as PokemonDetails);
   const { data } = await client.query({
     query: GET_POKEMON_DETAILS,
     variables: { name },
