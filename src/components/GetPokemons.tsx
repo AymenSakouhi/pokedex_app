@@ -15,7 +15,7 @@ const GetPokemons = () => {
   const [limit, setLimit] = React.useState<number>(15); // eslint-disable-line @typescript-eslint/no-unused-vars
   const [showModal, setShowModal] = React.useState<boolean>(false); // eslint-disable-line @typescript-eslint/no-unused-vars
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { loading, error, data } = useQuery(GET_ALL_POKEMONS, {
+  const { data } = useQuery(GET_ALL_POKEMONS, {
     variables: { offset, limit },
   });
 
