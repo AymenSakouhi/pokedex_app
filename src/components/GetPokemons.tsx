@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_POKEMONS, GET_POKEMON_DETAILS } from "../graphql/Queries";
-import { GetPokemonDetails } from "./GetPokemonDetails";
+import { GET_ALL_POKEMONS } from "../graphql/Queries";
+import { GetPokemonDetails, PokemonDetails } from "./GetPokemonDetails";
 
 type Pokemon = {
   name: string;
@@ -11,13 +11,17 @@ type Pokemon = {
 
 const GetPokemons = () => {
   const [offset, setOffset] = React.useState<number>(0);
-  const [limit, setLimit] = React.useState<number>(15);
+  const [limit, setLimit] = React.useState<number>(15); // eslint-disable-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { loading, error, data } = useQuery(GET_ALL_POKEMONS, {
     variables: { offset, limit },
   });
 
   const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
-  const [pokemonDetails, setPokemonDetails] = React.useState<Pokemon[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [pokemonDetails, setPokemonDetails] = React.useState<PokemonDetails[]>(
+    []
+  );
 
   useEffect(() => {
     setPokemons(data?.pokemons?.results);

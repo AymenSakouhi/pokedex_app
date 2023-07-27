@@ -11,7 +11,6 @@ import {
 } from "@apollo/client";
 
 import { onError } from "@apollo/client/link/error";
-import GetPokemons from "./components/GetPokemons.tsx";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -36,9 +35,7 @@ export const client = new ApolloClient({
   link: from([errorLink, link]),
 });
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>

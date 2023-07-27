@@ -11,14 +11,24 @@ export type PokemonDetails = {
   name: string;
   sprites: {
     front_default: string;
-    __typename: string;
   };
   moves: Move[];
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
+  stats: {
+    base_stat: number;
+    stat: {
+      name: string;
+    };
+  }[];
 };
 
 export const GetPokemonDetails = async (
   name: string,
-  cb: React.Dispatch<React.SetStateAction<PokemonDetails>>
+  cb: React.Dispatch<PokemonDetails[]>
 ) => {
   const { data } = await client.query({
     query: GET_POKEMON_DETAILS,
